@@ -10,7 +10,7 @@
       (async function () {
         await cheerpjInit({ version: 17 });
         cheerpjCreateDisplay(1600, 1200);
-        await cheerpjRunJar("https://TracksJosh.github.io/Yahtzee-Test/yahtzee-1.0-SNAPSHOT.jar");
+        await cheerpjRunJar("https://tracksjosh.github.io/Yahtzee-Test/yahtzee-1.0-SNAPSHOT.jar");
       })();
 
       let bgAudio = null;
@@ -41,13 +41,13 @@
       console.log = function(msg) {
           origLog(msg);
           if (String(msg).trim() === "PLAY_Click") {
-              cjPlaySound("https://TracksJosh.github.io/Yahtzee-Test/sounds/Click.wav");
+              cjPlaySound("https://tracksjosh.github.io/Yahtzee-Test/sounds/Click.wav");
           }
           else if (String(msg).trim() === "PLAY_DiceRoll") {
-              cjPlaySound("https://TracksJosh.github.io/Yahtzee-Test/sounds/DiceRoll.wav");
+              cjPlaySound("https://tracksjosh.github.io/Yahtzee-Test/sounds/DiceRoll.wav");
           }
           else if (String(msg).trim() === "PLAY_background") {
-              cjStartMusic("https://TracksJosh.github.io/Yahtzee-Test/sounds/background.wav");
+              cjStartMusic("https://tracksjosh.github.io/Yahtzee-Test/sounds/background.wav");
           }
           else if (String(msg).trim() === "STOP_background") {
               cjStopMusic();
