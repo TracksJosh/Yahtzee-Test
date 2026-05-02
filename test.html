@@ -41,13 +41,13 @@
       console.log = function(msg) {
           origLog(msg);
           if (String(msg).trim() === "PLAY_Click") {
-              cjPlaySound("/sounds/Click.wav");
+              cjPlaySound("https://TracksJosh.github.io/Yahtzee-Test/sounds/Click.wav");
           }
           else if (String(msg).trim() === "PLAY_DiceRoll") {
-              cjPlaySound("/sounds/DiceRoll.wav");
+              cjPlaySound("https://TracksJosh.github.io/Yahtzee-Test/sounds/DiceRoll.wav");
           }
           else if (String(msg).trim() === "PLAY_background") {
-              cjStartMusic("/sounds/background.wav");
+              cjStartMusic("https://TracksJosh.github.io/Yahtzee-Test/sounds/background.wav");
           }
           else if (String(msg).trim() === "STOP_background") {
               cjStopMusic();
