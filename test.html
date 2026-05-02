@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CheerpJ Java App Example</title>
+    <script src="https://cjrtnc.leaningtech.com/4.3/loader.js"></script>
+    <style>
+      @font-face {
+        font-family: 'Bauhaus 93';
+        src: url('/fonts/Bauhaus93.ttf') format('truetype');
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      (async function () {
+        await document.fonts.load("16px 'Bauhaus 93'");
+        await cheerpjInit({ version: 17 });
+        cheerpjCreateDisplay(1600, 1200);
+        await cheerpjRunJar("/app/yahtzee-1.0-SNAPSHOT.jar");
+      })();
+
+      let bgAudio = null;
+
+      function cjPlaySound(path) {
+        console.log("Playing "+path);
+        const audio = new Audio(path);
+        audio.play().catch(err => {
+            console.error("Audio failed:", err);
+        });
+      }
+
+      function cjStartMusic(path) {
+        if (bgAudio) bgAudio.pause();
+        bgAudio = new Audio(path);
+        bgAudio.loop = true;
+        bgAudio.play();
+      }
+
+      function cjStopMusic() {
+        if (bgAudio) {
+          bgAudio.pause();
+          bgAudio = null;
+        }
+      }
+
+      const origLog = console.log;
+      console.log = function(msg) {
+          origLog(msg);
+          if (String(msg).trim() === "PLAY_Click") {
+              cjPlaySound("/sounds/Click.wav");
+          }
+          else if (String(msg).trim() === "PLAY_DiceRoll") {
+              cjPlaySound("/sounds/DiceRoll.wav");
+          }
+          else if (String(msg).trim() === "PLAY_background") {
+              cjStartMusic("/sounds/background.wav");
+          }
+          else if (String(msg).trim() === "STOP_background") {
+              cjStopMusic();
+          }
+      };
+    </script>
+  </body>
+</html>
